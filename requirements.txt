@@ -1,0 +1,22 @@
+# Web Crawling
+beautifulsoup4==4.12.3
+selenium==4.16.0
+requests==2.31.0
+lxml==5.1.0
+
+# AI APIs
+openai==1.10.0
+anthropic==0.18.1
+
+# Database
+sqlalchemy==2.0.25
+
+# Email
+python-dotenv==1.0.1
+
+# Utilities
+pyyaml==6.0.1
+python-dateutil==2.8.2
+
+# Logging
+loguru==0.7.2

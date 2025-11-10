@@ -1,0 +1,20 @@
+# IT News Sites Configuration
+# Format: category|site_name|url|selector_type|article_selector
+# category: ROBOTICS, AI, DEVELOPMENT
+# selector_type: css, xpath
+# article_selector: CSS selector or XPath for article elements
+
+# Robotics News
+ROBOTICS|IEEE Spectrum Robotics|https://spectrum.ieee.org/topic/robotics/|css|article.article-item
+ROBOTICS|The Robot Report|https://www.therobotreport.com/|css|article.post
+ROBOTICS|Robotics Business Review|https://www.roboticsbusinessreview.com/|css|.post
+
+# AI News
+AI|MIT Technology Review AI|https://www.technologyreview.com/topic/artificial-intelligence/|css|.tease
+AI|VentureBeat AI|https://venturebeat.com/category/ai/|css|.article-item
+AI|The Verge AI|https://www.theverge.com/ai-artificial-intelligence|css|.duet--content-cards--content-card
+
+# Development News
+DEVELOPMENT|Hacker News|https://news.ycombinator.com/|css|.athing
+DEVELOPMENT|Dev.to|https://dev.to/|css|.crayons-story
+DEVELOPMENT|TechCrunch|https://techcrunch.com/|css|.post-block
