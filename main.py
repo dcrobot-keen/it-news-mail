@@ -16,6 +16,7 @@ from src.database.models import ProcessingLog
 from src.crawler.crawler import NewsCrawler
 from src.summarizer.summarizer import NewsSummarizer
 from src.mailer.mailer import NewsMailer
+from src.exporter.markdown_exporter import MarkdownExporter
 from datetime import datetime
 
 
@@ -85,6 +86,12 @@ def main():
         else:
             logger.warning("Failed to send email digest")
 
+        # Step 5: Export to markdown files
+        logger.info("Step 5: Exporting to markdown files")
+        exporter = MarkdownExporter(config["exporter"], session)
+        export_stats = exporter.export_all()
+        logger.info(f"Exported {export_stats['total']} articles to {export_stats['files_created']} markdown files")
+
         # Update processing log
         log_entry.status = "completed"
         log_entry.completed_at = datetime.utcnow()
@@ -95,6 +102,7 @@ def main():
         logger.info(f"  - Articles crawled: {log_entry.articles_crawled}")
         logger.info(f"  - Articles summarized: {log_entry.articles_summarized}")
         logger.info(f"  - Emails sent: {log_entry.emails_sent}")
+        logger.info(f"  - Markdown files created: {export_stats['files_created']}")
         logger.info("=" * 60)
 
         return 0

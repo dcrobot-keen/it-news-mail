@@ -36,6 +36,11 @@
 ### 6. 메일 전송
 - 팀원들에게 자동으로 뉴스 요약 전송
 
+### 7. 마크다운 파일 출력
+- 날짜별로 요약된 뉴스를 마크다운 파일로 자동 생성
+- 카테고리별로 구조화된 문서
+- 이미지 포함 (이미지가 있는 경우)
+
 ## 기술 스택 (예정)
 
 ### Backend
@@ -115,11 +120,15 @@ it-news-mail/
 │   ├── summarizer/        # 요약 모듈
 │   ├── video_generator/   # 동영상 생성 모듈
 │   ├── mailer/            # 메일 발송 모듈
+│   ├── exporter/          # 마크다운 출력 모듈
 │   └── database/          # DB 관리 모듈
 ├── data/
 │   └── news.db            # SQLite DB (또는 PostgreSQL 연결)
+├── output/
+│   └── markdown/          # 마크다운 파일 출력 디렉토리
 ├── logs/                  # 로그 파일
 ├── tests/                 # 테스트 코드
+├── test_markdown_export.py  # 마크다운 출력 테스트 스크립트
 └── main.py                # 메인 실행 파일
 ```
 
@@ -134,7 +143,23 @@ pip install -r requirements.txt
 
 # 실행
 python main.py
+
+# 마크다운 출력만 테스트
+python test_markdown_export.py
 ```
+
+## 마크다운 출력 형식
+
+생성되는 마크다운 파일은 다음과 같은 형식입니다:
+
+- 파일명: `news_YYYY-MM-DD.md`
+- 카테고리별로 섹션 구분 (로보틱스, AI, 개발 뉴스)
+- 각 뉴스 항목은 다음 정보 포함:
+  - 제목
+  - 대표 이미지 (이미지가 있는 경우)
+  - 출처 및 날짜
+  - AI 요약 내용
+  - 원문 링크
 
 ## 향후 개선 사항
 

@@ -14,14 +14,14 @@ database:
 
 # AI API Configuration
 ai:
-  provider: openai  # openai or anthropic
+  provider: anthropic  # openai or anthropic
   openai:
     api_key: ${OPENAI_API_KEY}
     model: gpt-4-turbo-preview
     max_tokens: 1000
   anthropic:
     api_key: ${ANTHROPIC_API_KEY}
-    model: claude-3-sonnet-20240229
+    model: claude-sonnet-4-5
     max_tokens: 1000
 
 # Sora Video Generation (placeholder - API not yet available)
@@ -66,3 +66,7 @@ logging:
   log_dir: logs
   max_file_size: 10485760  # 10MB
   backup_count: 5
+
+# Exporter Configuration
+exporter:
+  output_dir: output/markdown  # Directory for markdown files
