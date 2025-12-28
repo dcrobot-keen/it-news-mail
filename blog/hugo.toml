@@ -1,88 +1,104 @@
 baseURL = 'https://dcrobot-keen.github.io/it-news-mail/'
 languageCode = 'ko-kr'
+defaultContentLanguage = 'ko-kr'
 title = 'IT News Digest'
-theme = 'PaperMod'
+theme = 'stack'
+copyright = "© 2025 IT News Digest"
 
 [pagination]
   pagerSize = 10
 
-[params]
-  description = "AI, 로보틱스, 개발 뉴스를 매일 요약해서 전달합니다"
-  author = "IT News Team"
-
-  # PaperMod specific
-  ShowReadingTime = true
-  ShowShareButtons = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  ShowRssButtonInSectionTermList = true
-  UseHugoToc = true
-  disableSpecial1stPost = false
-  disableScrollToTop = false
-  comments = false
-  hidemeta = false
-  hideSummary = false
-  showtoc = true
-  tocopen = true
-
-  # Home Page
-  [params.homeInfoParams]
-    Title = "IT News Digest 📰"
-    Content = "AI, 로보틱스, 개발 뉴스를 자동으로 수집하고 요약하여 전달합니다."
-
-  # Social Icons
-  [[params.socialIcons]]
-    name = "github"
-    url = "https://github.com/YOUR-USERNAME/it-news-mail"
-
-# Menu
-[[menu.main]]
-  identifier = "archives"
-  name = "아카이브"
-  url = "/archives/"
-  weight = 10
-
-[[menu.main]]
-  identifier = "categories"
-  name = "카테고리"
-  url = "/categories/"
-  weight = 20
-
-[[menu.main]]
-  identifier = "tags"
-  name = "태그"
-  url = "/tags/"
-  weight = 30
-
-[[menu.main]]
-  identifier = "search"
-  name = "검색"
-  url = "/search/"
-  weight = 40
-
-# Taxonomies
 [taxonomies]
-  category = "categories"
-  tag = "tags"
+  category = 'categories'
+  tag = 'tags'
 
-# Outputs (for search)
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
+[params]
+  mainSections = ['posts']
+  featuredImageField = 'image'
+  rssFullContent = true
+  favicon = ""
 
-# Markup settings
+  [params.footer]
+    since = 2025
+    customText = "AI, 로보틱스, 개발 뉴스를 매일 요약해서 전달합니다"
+
+  [params.dateFormat]
+    published = "2006-01-02"
+    lastUpdated = "2006-01-02 15:04 MST"
+
+  [params.sidebar]
+    emoji = "📰"
+    subtitle = "IT 뉴스 자동화 시스템"
+    [params.sidebar.avatar]
+      enabled = false
+
+  [params.article]
+    math = false
+    toc = true
+    readingTime = true
+    [params.article.license]
+      enabled = false
+
+  [params.comments]
+    enabled = false
+
+[[params.widgets.homepage]]
+  type = "search"
+
+[[params.widgets.homepage]]
+  type = "categories"
+  [params.widgets.homepage.params]
+    limit = 10
+
+[[params.widgets.homepage]]
+  type = "tag-cloud"
+  [params.widgets.homepage.params]
+    limit = 50
+
+[[params.widgets.page]]
+  type = "toc"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "홈"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "categories"
+    name = "카테고리"
+    url = "/categories/"
+    weight = 2
+
+  [[menu.main]]
+    identifier = "tags"
+    name = "태그"
+    url = "/tags/"
+    weight = 3
+
+  [[menu.main]]
+    identifier = "archives"
+    name = "아카이브"
+    url = "/archives/"
+    weight = 4
+
 [markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    endLevel = 4
+    ordered = true
+    startLevel = 2
   [markup.highlight]
-    anchorLineNos = false
+    noClasses = false
     codeFences = true
-    guessSyntax = false
-    hl_Lines = ''
-    hl_inline = false
-    lineAnchors = ''
+    guessSyntax = true
     lineNoStart = 1
     lineNos = false
     lineNumbersInTable = true
-    noClasses = true
-    noHl = false
-    style = 'monokai'
     tabWidth = 4
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
