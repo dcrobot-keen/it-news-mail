@@ -88,9 +88,9 @@ copyright = "© 2025 IT News Digest"
     [markup.goldmark.renderer]
       unsafe = true
   [markup.tableOfContents]
-    endLevel = 4
+    endLevel = 3
     ordered = true
-    startLevel = 2
+    startLevel = 3
   [markup.highlight]
     noClasses = false
     codeFences = true
