@@ -89,7 +89,7 @@ copyright = "© 2025 IT News Digest"
       unsafe = true
   [markup.tableOfContents]
     endLevel = 3
-    ordered = true
+    ordered = false
     startLevel = 3
   [markup.highlight]
     noClasses = false
