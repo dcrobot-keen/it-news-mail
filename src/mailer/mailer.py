@@ -226,6 +226,34 @@ class NewsMailer:
 
         return ''.join(html_parts)
 
+    def _html_to_plain_text(self, html_content):
+        """
+        Convert HTML email to plain text for clients that don't support HTML
+
+        Args:
+            html_content (str): HTML content
+
+        Returns:
+            str: Plain text version
+        """
+        import re
+        from html import unescape
+
+        # Remove HTML tags
+        text = re.sub(r'<style[^>]*>.*?</style>', '', html_content, flags=re.DOTALL)
+        text = re.sub(r'<script[^>]*>.*?</script>', '', text, flags=re.DOTALL)
+        text = re.sub(r'<[^>]+>', '', text)
+
+        # Decode HTML entities
+        text = unescape(text)
+
+        # Clean up whitespace
+        text = re.sub(r'\n\s*\n', '\n\n', text)
+        text = re.sub(r'[ \t]+', ' ', text)
+        text = text.strip()
+
+        return text
+
     def _send_email(self, subject, html_content):
         """
         Send email via SMTP
@@ -240,7 +268,12 @@ class NewsMailer:
         msg['From'] = self.from_email
         msg['To'] = ', '.join(self.recipients)
 
-        # Attach HTML content
+        # Generate plain text version for email clients that don't support HTML
+        plain_text = self._html_to_plain_text(html_content)
+        text_part = MIMEText(plain_text, 'plain', 'utf-8')
+        msg.attach(text_part)
+
+        # Attach HTML content (should be attached AFTER plain text for proper fallback)
         html_part = MIMEText(html_content, 'html', 'utf-8')
         msg.attach(html_part)
 

@@ -56,3 +56,11 @@ data/
 
 # Videos (generated)
 videos/
+
+# Hugo
+blog/public/
+blog/resources/
+blog/.hugo_build.lock
+tools/hugo.zip
+tools/LICENSE
+tools/README.md

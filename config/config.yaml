@@ -40,7 +40,7 @@ email:
     use_tls: true
   from: ${EMAIL_FROM}
   recipients:
-    - team@example.com
+    - kt.doh@hyundai-autoever.com
 
 # Crawler Configuration
 crawler:

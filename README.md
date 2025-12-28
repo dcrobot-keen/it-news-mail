@@ -41,6 +41,11 @@
 - 카테고리별로 구조화된 문서
 - 이미지 포함 (이미지가 있는 경우)
 
+### 8. Hugo 블로그 자동 배포
+- GitHub Pages를 통한 정적 사이트 호스팅
+- GitHub Actions를 통한 자동 빌드 및 배포
+- PaperMod 테마 기반의 깔끔한 블로그 디자인
+
 ## 기술 스택 (예정)
 
 ### Backend
@@ -132,7 +137,9 @@ it-news-mail/
 └── main.py                # 메인 실행 파일
 ```
 
-## 설치 및 사용 (추후 업데이트 예정)
+## 설치 및 사용
+
+### 기본 설정
 
 ```bash
 # 패키지 설치
@@ -146,6 +153,36 @@ python main.py
 
 # 마크다운 출력만 테스트
 python test_markdown_export.py
+```
+
+### Hugo 블로그 사용
+
+```bash
+# 1. 마크다운 파일을 Hugo 형식으로 변환
+python convert_to_hugo.py
+
+# 2. 로컬에서 블로그 미리보기 (Windows)
+cd blog
+../tools/hugo.exe server
+
+# 3. 로컬에서 블로그 미리보기 (Mac/Linux)
+cd blog
+hugo server
+
+# 4. 브라우저에서 http://localhost:1313/it-news-mail/ 접속
+```
+
+### GitHub Pages 배포
+
+1. GitHub 저장소 설정에서 Pages 활성화
+2. Settings > Pages > Source를 "GitHub Actions"로 변경
+3. `blog/hugo.toml` 파일에서 `baseURL`을 본인의 GitHub Pages URL로 수정
+4. 코드를 master 브랜치에 push하면 자동으로 배포됨
+
+```bash
+git add .
+git commit -m "Add Hugo blog"
+git push origin master
 ```
 
 ## 마크다운 출력 형식
