@@ -20,7 +20,7 @@ copyright = "© 2025 IT News Digest"
 
   [params.footer]
     since = 2025
-    customText = "AI, 로보틱스, 개발 뉴스를 매일 요약해서 전달합니다"
+    customText = "AI, 로보틱스, 개발 뉴스를 요약해서 전달합니다"
 
   [params.dateFormat]
     published = "2006-01-02"

@@ -1,4 +1,5 @@
 """Markdown Exporter Module - Export news to markdown files by date"""
+import re
 from pathlib import Path
 from datetime import datetime
 from collections import defaultdict
@@ -185,8 +186,16 @@ class MarkdownExporter:
         Returns:
             list: List of markdown lines
         """
+        # Extract Korean title if available in summary
+        title_display = article.title
+        if article.summary:
+            title_match = re.match(r'^제목:\s*(.+)$', article.summary, re.MULTILINE)
+            if title_match:
+                korean_title = title_match.group(1).strip()
+                title_display = f"{article.title} ({korean_title})"
+
         lines = [
-            f"### {article.title}",
+            f"### {title_display}",
             "",
         ]
 
@@ -204,10 +213,13 @@ class MarkdownExporter:
             "",
         ])
 
-        # Add summary
+        # Add summary (remove title line if present)
         if article.summary:
+            summary_text = article.summary
+            # Remove "제목: ..." line from summary
+            summary_text = re.sub(r'^제목:\s*.+\n\n?', '', summary_text, flags=re.MULTILINE)
             lines.extend([
-                article.summary,
+                summary_text.strip(),
                 "",
             ])
 
