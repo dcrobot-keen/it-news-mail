@@ -16,7 +16,7 @@ copyright = "© 2025 IT News Digest"
   mainSections = ['posts']
   featuredImageField = 'image'
   rssFullContent = true
-  favicon = ""
+  favicon = "/favicon.ico"
 
   [params.footer]
     since = 2025
