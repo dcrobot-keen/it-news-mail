@@ -29,23 +29,22 @@ copyright = "© 2025 IT News Digest"
   [params.sidebar]
     emoji = "📰"
     subtitle = "IT 뉴스 자동화 시스템"
-    [params.sidebar.avatar]
-      enabled = true
-      local = true
-      src = "/img/dev-keen.png"
+
+  [params.sidebar.avatar]
+    enabled = true
+    local = true
+    src = "img/dev-keen.png"
 
   [params.article]
     math = false
     toc = true
     readingTime = true
-    [params.article.license]
-      enabled = false
+
+  [params.article.license]
+    enabled = false
 
   [params.comments]
     enabled = false
-
-[[params.widgets.homepage]]
-  type = "search"
 
 [[params.widgets.homepage]]
   type = "categories"
@@ -103,4 +102,4 @@ copyright = "© 2025 IT News Digest"
     tabWidth = 4
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS"]
