@@ -31,7 +31,7 @@ copyright = "© 2025 IT News Digest"
     subtitle = "IT 뉴스 자동화 시스템"
 
   [params.sidebar.avatar]
-    enabled = true
+    enabled = false
     local = true
     src = "img/dev-keen.png"
 
