@@ -30,7 +30,9 @@ copyright = "© 2025 IT News Digest"
     emoji = "📰"
     subtitle = "IT 뉴스 자동화 시스템"
     [params.sidebar.avatar]
-      enabled = false
+      enabled = true
+      local = true
+      src = "img/dev-keen.png"
 
   [params.article]
     math = false
